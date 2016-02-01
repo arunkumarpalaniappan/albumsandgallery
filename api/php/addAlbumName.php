@@ -1,6 +1,6 @@
 <?php
 require_once('db/dbConnection.php');
-$name=$_GET['name'];
+$name=$_POST['name'];
 if (isset($name)){
 $query="INSERT INTO `albums` (`name`) VALUES ('$name')";
 mysqli_query($conn, $query) or die('ERROR:'.mysqli_error($conn));

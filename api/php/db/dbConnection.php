@@ -1,3 +1,3 @@
 <?php
-$conn = new mysqli('localhost', 'arunkumar', 'arunkumar', 'album_db');
+$conn = new mysqli('localhost', 'root', 'Nups258', 'album_db');
 ?>

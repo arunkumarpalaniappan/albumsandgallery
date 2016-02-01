@@ -10,15 +10,19 @@
 </form>
 </body>
 <script>
-$('#imageupload').ajaxSubmit({
-      type: "POST",
-    url: '../api/php/fileupload.php',
-      data: $('#imageupload').serialize(),
-      cache: false,
-      success: function (response) {
-          alert(response);
-      }
+function myUpload(obj)
+{
+  $ajax({
+        type: "POST",
+        url: '../api/php/fileupload.php',
+        data: $('#imageupload').serialize(),
+        cache: false,
+        success: function (response) {
+            alert(response);
+        }
 
-  });
+    });
+
+}
 </script>
 </html>

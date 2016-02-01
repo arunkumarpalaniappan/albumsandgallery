@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Pannel</title>
+    <link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.4.2.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://w2ui.com/src/w2ui-1.4.2.min.js"></script>
+      <script type="text/javascript" src="../api/js/script.js"></script>
+</head>
+<body>
+
+<div id="layout" style="width: 100%; height: 500px;"></div>
+
+<script type="text/javascript">
+$(function () {
+    var pstyle = 'border: 1px solid #dfdfdf; padding: 5px;';
+    $('#layout').w2layout({
+        name: 'layout',
+        panels: [
+            { type: 'top', size: 50, style: pstyle, content: '<font align="center"><b>Admin Pannel</b></font>' },
+            { type: 'left', size: 200, style: pstyle, content: '<div id="sidebar" style="height:100%; width:100%;"></div>' },
+            { type: 'main', style: pstyle, content: 'main' }
+        ]
+    });
+});
+$(function () {
+    $('#sidebar').w2sidebar({
+        name       : 'sidebar',
+        nodes : [
+            { id: 'level-album', text: 'Albums', img: 'icon-folder', expanded: true, group: true,
+              nodes: []
+            }
+        ]
+    });
+});
+
+function addItems(response) {
+  var obj=JSON.parse(response);
+  for(var i in obj)
+  {
+    w2ui.sidebar.add([
+         { id: obj[i], text: obj[i], icon: 'w2ui-icon-check' }
+     ]);
+  }
+}
+getAlbumNames(addItems);
+</script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@ function myUpload(obj)
 {
   $('#imageupload').ajaxSubmit({
         type: "POST",
-      url: '../php/fileupload.php',
+      url: '../api/php/fileupload.php',
         data: $('#imageupload').serialize(),
         cache: false,
         success: function (response) {

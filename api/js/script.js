@@ -1,7 +1,7 @@
 function getAlbumNames(successFunction)
 {
    $.ajax({
-               url: 'http://localhost/Freelancer/AlbumandGalary/api/php/getAlbumNames.php',
+               url: '../api/php/getAlbumNames.php',
                type: 'post',
            success:function(response) {
                    successFunction(response);
@@ -11,11 +11,22 @@ function getAlbumNames(successFunction)
   function addAlbumName(name,successFunction)
   {
     $.ajax({
-                url: 'http://localhost/Freelancer/AlbumandGalary/api/php/addAlbumName.php',
+                url: '../api/php/addAlbumName.php',
                 data: 'name='+name,
                 type: 'post',
             success:function(response) {
                      loginAction(response);
+                }
+      });
+  }
+  function uploadFile(data,successFunction)
+  {
+    $.ajax({
+                url: '../api/php/uploadFile.php',
+                data: data,
+                type: 'post',
+                success:function(response) {
+                   successFunction(response);
                 }
       });
   }

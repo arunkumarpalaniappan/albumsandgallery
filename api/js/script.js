@@ -15,7 +15,7 @@ function getAlbumNames(successFunction)
                 data: 'name='+name,
                 type: 'post',
             success:function(response) {
-                     loginAction(response);
+                     successFunction(response);
                 }
       });
   }

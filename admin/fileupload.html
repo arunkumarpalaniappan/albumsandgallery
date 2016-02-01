@@ -2,27 +2,23 @@
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <body>
-<form method="POST" id="imageupload" enctype="multipart/form-data" onsubmit="myUpload(this)">
+<form method="POST" id="imageupload" enctype="multipart/form-data">
   <input type="text" id="album" name="album" placeholder="Album" required /><br/>
   <input type="text" id="category" name="category" placeholder="Category" required /><br/>
   <input type="file" id="file" name="file" multiple size="50" required /><br/>
   <input type="submit" />
 </form>
 </body>
-<script>
-function myUpload(obj)
+<script src="../api/js/script.js"></script>
+<script type="text/javascript">
+function onUploaded(response)
 {
-  $ajax({
-        type: "POST",
-        url: '../api/php/fileupload.php',
-        data: $('#imageupload').serialize(),
-        cache: false,
-        success: function (response) {
-            alert(response);
-        }
-
-    });
-
+  alert(response);
 }
+$("#imageupload").on('submit', function(e)
+  {
+   uploadFile($('#imageupload').serialize(),onUploaded);
+    e.preventDefault();
+});
 </script>
 </html>

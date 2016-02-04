@@ -14,14 +14,14 @@
     <span class="btn btn-success fileinput-button" id='uploaddiv'>
         <i class="glyphicon glyphicon-file"></i>
         <span id='butn'>Select files...</span>
-
         <input id="fileupload" type="file" name="files[]" >
-
     </span>
+    <div id="progress" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
     <div id='file'></div></br>
     <input type="button" id='submitbt' class="btn btn-success fileinput-button" onclick="addPhoto()" value="Submit" disabled>
     </div>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/vendor/jquery.ui.widget.js"></script>
 <script src="js/jquery.iframe-transport.js"></script>
@@ -60,7 +60,14 @@ $(function () {
           $('#file').html(file.name);
           $('#submitbt').prop('disabled', false);
             });
-        }
+        },
+        progressall: function (e, data) {
+           var progress = parseInt(data.loaded / data.total * 100, 10);
+           $('#progress .progress-bar').css(
+               'width',
+               progress + '%'
+           );
+       }
     })
   });
 </script>

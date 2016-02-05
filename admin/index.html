@@ -19,7 +19,7 @@ $(function () {
         panels: [
             { type: 'top', size: 50, style: pstyle, content: '<div width="100%" style="text-align:center"><font align="center"><b>Admin Pannel</b></font></div>' },
             { type: 'left', size: 200, style: pstyle, content: '<div id="sidebar" style="height:100%; width:100%;"></div>' },
-            { type: 'main', style: pstyle, content: '<div class="w2ui-buttons"><button class="btn"  style="background-image: linear-gradient(#6abe68 0,#3f8f3d 100%);color:white;" name="save" onclick="$('#popup1').w2popup();">Upload Files</button></div>' }
+            { type: 'main', style: pstyle, content: '<div class="w2ui-buttons"><button class="btn"  style="background-image: linear-gradient(#6abe68 0,#3f8f3d 100%);color:white;" name="save" onclick="popup(\'demo\');">Upload Files</button></div>' }
         ]
     });
 });
@@ -61,6 +61,21 @@ $(function () {
     getAlbumNames(addItems);
 
 });
+
+function popup(id) {
+    w2popup.open({
+        title: 'Upload Image..',
+        body: '<iframe src="../plugins/fileupload/basic.php?album='+id+'" frameborder="0" height="90%" width="100%"></iframe>',
+        width     : 500,
+        height    : 320,
+        overflow  : 'hidden',
+        speed     : '0.3',
+        opacity   : '0.8',
+        modal     : true,
+        showClose : true,
+        showMax   : true
+    });
+}
 
 
  </script>
